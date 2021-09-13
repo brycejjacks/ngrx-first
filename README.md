@@ -62,3 +62,10 @@ ng add reducer //for user
 ```
 ng g r store/user --creators true --flat false --group --module app.module.ts --skip-tests --api --reducers index.ts
 ```
+
+## Step 5
+ng add effect //for user
+## Command
+```
+ng g ef store/user --group --api --flat false --module app.module.ts --root --skip-tests --creators true
+```
