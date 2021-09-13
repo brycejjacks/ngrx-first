@@ -48,3 +48,10 @@ add ngrx dependencies
 ```
 npm install @ngrx/{store,effects,entity,store-devtools} --save
 ```
+
+## Step 4
+ng add action for user
+## Command
+```
+ng g action store/user --group --api --flat false --skip-tests --prefix load --creators true
+```
