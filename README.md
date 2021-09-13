@@ -50,8 +50,15 @@ npm install @ngrx/{store,effects,entity,store-devtools} --save
 ```
 
 ## Step 4
-ng add action for user
+ng add action //for user
 ## Command
 ```
 ng g action store/user --group --api --flat false --skip-tests --prefix load --creators true
+```
+
+## Step 4
+ng add reducer //for user
+## Command
+```
+ng g r store/user --creators true --flat false --group --module app.module.ts --skip-tests --api --reducers index.ts
 ```
