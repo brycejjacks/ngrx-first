@@ -34,3 +34,10 @@ add schematics
 ```
 ng add @ngrx/schematics@latest --default-collection true
 ```
+
+## Step 2
+ng generate store
+## Command
+```
+ng generate store AppState --root --module app.module.ts --state-path store --state-interface AppState
+```
