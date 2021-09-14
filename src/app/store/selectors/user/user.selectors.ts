@@ -8,4 +8,9 @@ export const userFeatureSelector = createFeatureSelector<AppState, userFeature.S
 export const userUsersSelector = createSelector(
     userFeatureSelector,
     (state) => state.users
-)
+);
+
+export const selectedUserSelector = createSelector(
+    userFeatureSelector,
+    (state) => state.selectedUser
+);
