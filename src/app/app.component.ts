@@ -1,7 +1,11 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { User } from './models/user';
+import { AppState } from './store';
 import { loadUsers, loadUsersSuccess, sayCheese, selectUser } from './store/actions/user/user.actions';
+import { userUsersSelector } from './store/selectors/user/user.selectors';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +14,14 @@ import { loadUsers, loadUsersSuccess, sayCheese, selectUser } from './store/acti
 })
 export class AppComponent {
   title = 'ngrx0';
-
+  users$: Observable<User[]>;
   constructor(
-    private store: Store
+    private store: Store<AppState>
   ) {
+    this.store.dispatch(loadUsers());
     this.store.dispatch(loadUsersSuccess({data: [{id:9, name: 'Billy'}]}));
     this.store.dispatch(selectUser({data: {id:9, name:'Nina'}}))
-    this.store.dispatch(sayCheese({data: 'what it do Jack'}));
+    this.store.dispatch(sayCheese({data: 'what it do cheddarJack'}));
+    this.users$ = this.store.select(userUsersSelector);
   }
 }

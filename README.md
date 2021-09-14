@@ -69,3 +69,10 @@ ng add effect //for user
 ```
 ng g ef store/user --group --api --flat false --module app.module.ts --root --skip-tests --creators true
 ```
+
+## Step 5
+ng add selctor //for user
+## Command
+```
+ng g se store/user --flat false --group --skip-tests
+```
