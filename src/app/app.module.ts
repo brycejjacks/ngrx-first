@@ -13,6 +13,7 @@ import * as fromPost from './store/reducers/post/post.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user/user.effects';
 import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
+import { PostEffects } from './store/effects/post/post.effects';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducer),
     StoreModule.forFeature(fromPost.postFeatureKey, fromPost.reducer),
-    EffectsModule.forRoot([UserEffects])
+    EffectsModule.forRoot([UserEffects, PostEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

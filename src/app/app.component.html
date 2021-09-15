@@ -2,8 +2,16 @@
 <p>Selected User: {{selctedUser.name}}</p>
 </ng-container>
 
+<p>Users List</p>
 <ul>
     <li (click)='selectUser(user)' *ngFor='let user of users$ | async'>
         {{user.name}}
+    </li>
+</ul>
+
+<p>Post List</p>
+<ul>
+    <li *ngFor="let post of posts$ | async">
+        {{post.title}}
     </li>
 </ul>

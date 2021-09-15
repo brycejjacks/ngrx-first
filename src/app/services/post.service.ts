@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
+import { Post } from '../models/post';
 import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  
+export class PostService {
+
   constructor(private apiService: ApiService) { }
 
-  getAllUsers() {
-    return this.apiService.get<User[]>('users');
+  getAllPosts() {
+    return this.apiService.get<Post[]>('posts');
   }
 }
