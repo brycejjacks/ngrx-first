@@ -11,7 +11,7 @@
 
 <p>Post List</p>
 <ul>
-    <li *ngFor="let post of posts$ | async">
-        {{post.title}}
+    <li *ngFor="let postWithUser of postsWithUser$ | async">
+        {{postWithUser.post.title}} -{{postWithUser.user.name}}
     </li>
 </ul>

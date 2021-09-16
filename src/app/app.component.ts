@@ -7,8 +7,9 @@ import { User } from './models/user';
 import { AppState } from './store';
 import { loadPosts, loadPostsSuccess } from './store/actions/post/post.actions';
 import { loadUsers, loadUsersSuccess, sayCheese, selectUser } from './store/actions/user/user.actions';
+import { postWithUserSelector } from './store/selectors/combined/post-user.selectors';
 import { postsSelector } from './store/selectors/post/post.selectors';
-import { selectedUserSelector, userUsersSelector } from './store/selectors/user/user.selectors';
+import { selectedUserSelector, usersSelector } from './store/selectors/user/user.selectors';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent {
   users$: Observable<User[]>;
   posts$: Observable<Post[]>;
   selectedUser$: Observable<User | null>;
+  postsWithUser$: Observable<{post: Post, user: User}[]>
   constructor(
     private store: Store<AppState>
   ) {
@@ -30,9 +32,10 @@ export class AppComponent {
     this.store.dispatch(sayCheese({data: 'what it do cheddarJack'}));
     //this.store.dispatch(loadPostsSuccess({data: [new Post(0,99, 'posted with the homies', 'this a story about being posted')]}))
 
-    this.users$ = this.store.select(userUsersSelector);
+    this.users$ = this.store.select(usersSelector);
     this.selectedUser$ = this.store.select(selectedUserSelector);
     this.posts$ = this.store.select(postsSelector)
+    this.postsWithUser$ = this.store.select(postWithUserSelector);
   }
 
   selectUser(user: User) {
