@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Post } from './models/post';
@@ -18,13 +19,20 @@ import { selectedUserSelector, usersSelector } from './store/selectors/user/user
 })
 export class AppComponent {
   title = 'ngrx0';
+  login: FormGroup;
   users$: Observable<User[]>;
   posts$: Observable<Post[]>;
   selectedUser$: Observable<User | null>;
   postsWithUser$: Observable<{post: Post, user: User}[]>
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private fb: FormBuilder
   ) {
+    this.login = this.fb.group({
+      name: ['',Validators.required],
+      username: ['',Validators.compose([Validators.required, Validators.minLength(3),])],
+    })
+
     this.store.dispatch(loadUsers());
     this.store.dispatch(loadPosts());
     
@@ -40,5 +48,9 @@ export class AppComponent {
 
   selectUser(user: User) {
     this.store.dispatch(selectUser({data: user}))
+  }
+
+  findUser() {
+    
   }
 }

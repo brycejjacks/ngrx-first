@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user/user.effects';
 import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 import { PostEffects } from './store/effects/post/post.effects';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PostEffects } from './store/effects/post/post.effects';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducer),

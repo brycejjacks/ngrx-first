@@ -1,3 +1,9 @@
+<form [formGroup] = 'login'>
+    <input type="text" formControlName='name' placeholder="name">
+    <input type="text" formControlName='username' placeholder="username">
+    <button (click)='findUser()' [disabled]='login.invalid'>Login</button>
+</form>
+
 <ng-container *ngIf='(selectedUser$ | async) as selctedUser'>
 <p>Selected User: {{selctedUser.name}}</p>
 </ng-container>
